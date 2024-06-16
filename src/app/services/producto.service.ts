@@ -9,7 +9,7 @@ import { BackendResponse } from '../interfaces/backend-response.interface';
   providedIn: 'root',
 })
 export class ProductoService {
-  private readonly baseUrl = environment.BACKEND_URL + 'productos';
+  private readonly baseUrl = `${environment.BACKEND_URL}/productos`;
 
   constructor(private httpClient: HttpClient) {}
 
@@ -22,9 +22,9 @@ export class ProductoService {
     );
   }
 
-  public getProductoFeatured(): Observable<Producto> {
+  public getProductosFeatured(): Observable<Producto[]> {
     const url = `${this.baseUrl}/featured`;
-    return this.httpClient.get<BackendResponse<Producto>>(url).pipe(
+    return this.httpClient.get<BackendResponse<Producto[]>>(url).pipe(
       map((res) => {
         return res.data;
       })
