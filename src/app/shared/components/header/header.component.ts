@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { SeedService } from '../../../services/seed.service';
+import { ToastrService } from 'ngx-toastr';
 
 interface MenuItem {
   label: string;
@@ -20,4 +22,23 @@ export class HeaderComponent {
     { label: 'Formulario Transacción', routerLink: 'formulario-transaccion' },
     { label: 'Transacciones', routerLink: 'transacciones' },
   ];
+
+  constructor(
+    private seedService: SeedService,
+    private toastService: ToastrService
+  ) {}
+
+  seed(): void {
+    this.seedService.seed().subscribe({
+      next: () => this.toastService.info('Base de datos rellenada'),
+      error: (err) => console.error(err),
+    });
+  }
+
+  clean(): void {
+    this.seedService.clean().subscribe({
+      next: () => this.toastService.info('Base de datos limpiada'),
+      error: (err) => console.error(err),
+    });
+  }
 }
