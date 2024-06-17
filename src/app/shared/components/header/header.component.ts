@@ -17,5 +17,6 @@ export class HeaderComponent {
   menuItems: MenuItem[] = [
     { label: 'Productos', routerLink: 'productos' },
     { label: 'Formulario Producto', routerLink: 'formulario-producto' },
+    { label: 'Formulario Transacción', routerLink: 'formulario-transaccion' },
   ];
 }
