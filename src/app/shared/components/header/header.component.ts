@@ -14,5 +14,8 @@ interface MenuItem {
   styleUrl: './header.component.css',
 })
 export class HeaderComponent {
-  menuItems: MenuItem[] = [{ label: 'Productos', routerLink: 'productos' }];
+  menuItems: MenuItem[] = [
+    { label: 'Productos', routerLink: 'productos' },
+    { label: 'Formulario Producto', routerLink: 'formulario-producto' },
+  ];
 }
