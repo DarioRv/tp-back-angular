@@ -22,6 +22,7 @@ export class HeaderComponent {
     { label: 'Formulario Transacción', routerLink: 'formulario-transaccion' },
     { label: 'Transacciones', routerLink: 'transacciones' },
     { label: 'Tickets', routerLink: 'tickets' },
+    { label: 'Formulario Ticket', routerLink: 'formulario-ticket' },
   ];
 
   constructor(

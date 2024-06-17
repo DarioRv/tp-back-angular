@@ -4,6 +4,7 @@ import { FormularioProductoComponent } from './productos/formulario-producto/for
 import { FormularioConversionComponent } from './transaccion/formulario-conversion/formulario-conversion.component';
 import { ListadoTrasaccionesComponent } from './transaccion/listado-trasacciones/listado-trasacciones.component';
 import { ListadoTicketsComponent } from './tickets/listado-tickets/listado-tickets.component';
+import { FormularioTicketComponent } from './tickets/components/formulario-ticket/formulario-ticket.component';
 
 export const routes: Routes = [
   { path: 'productos', component: ListaProductosComponent },
@@ -11,4 +12,6 @@ export const routes: Routes = [
   { path: 'formulario-transaccion', component: FormularioConversionComponent },
   { path: 'transacciones', component: ListadoTrasaccionesComponent },
   { path: 'tickets', component: ListadoTicketsComponent },
+  { path: 'formulario-ticket', component: FormularioTicketComponent },
+  { path: 'formulario-ticket/:id', component: FormularioTicketComponent },
 ];

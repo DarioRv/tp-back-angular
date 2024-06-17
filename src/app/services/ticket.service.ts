@@ -44,4 +44,12 @@ export class TicketService {
       .delete<BackendResponse<boolean>>(url)
       .pipe(map((res) => res.data));
   }
+
+  getById(id: string): Observable<Ticket> {
+    const url = `${this.baseUrl}/${id}`;
+
+    return this.http
+      .get<BackendResponse<Ticket>>(url)
+      .pipe(map((res) => res.data));
+  }
 }

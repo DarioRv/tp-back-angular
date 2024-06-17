@@ -31,10 +31,16 @@
       <td>{{ ticket.categoriaEspectador | categoria }}</td>
       <td>
         <div class="d-flex gap-2">
-          <button class="btn btn-outline-info">
+          <button
+            class="btn btn-outline-info"
+            (click)="editTicket(ticket._id!)"
+          >
             <i class="bi bi-pencil-fill"></i>
           </button>
-          <button class="btn btn-outline-danger">
+          <button
+            class="btn btn-outline-danger"
+            (click)="deleteTicket(ticket._id!)"
+          >
             <i class="bi bi-trash-fill"></i>
           </button>
         </div>
