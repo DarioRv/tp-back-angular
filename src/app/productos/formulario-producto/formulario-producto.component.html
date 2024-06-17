@@ -88,7 +88,13 @@
       }
     </div>
 
-    <button type="submit" class="btn btn-primary">Guardar</button>
+    <button
+      type="submit"
+      class="btn btn-primary"
+      [disabled]="status === 'pending'"
+    >
+      {{ status === "pending" ? "Guardando..." : "Guardar" }}
+    </button>
   </form>
 </section>
 
