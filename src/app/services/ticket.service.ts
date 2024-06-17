@@ -13,11 +13,11 @@ export class TicketService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(params?: any): Observable<Ticket> {
+  getAll(params?: any): Observable<Ticket[]> {
     const url = this.baseUrl;
 
     return this.http
-      .get<BackendResponse<Ticket>>(url, { params })
+      .get<BackendResponse<Ticket[]>>(url, { params })
       .pipe(map((res) => res.data));
   }
 
