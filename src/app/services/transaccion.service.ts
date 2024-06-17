@@ -3,9 +3,13 @@ import { environment } from '../../environments/environment';
 import { map, Observable } from 'rxjs';
 import { Transaccion } from '../interfaces/transaccion.interface';
 import { BackendResponse } from '../interfaces/backend-response.interface';
+import { Injectable } from '@angular/core';
 
+@Injectable({
+  providedIn: 'root',
+})
 export class TransaccionService {
-  private readonly baseUrl = environment.BACKEND_URL + 'transacciones';
+  private readonly baseUrl = `${environment.BACKEND_URL}/transacciones`;
 
   constructor(private http: HttpClient) {}
 

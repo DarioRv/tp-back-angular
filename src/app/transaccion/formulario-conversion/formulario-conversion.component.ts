@@ -9,6 +9,8 @@ import {
 import { RequestStatus } from '../../shared/types/request-status.type';
 import { ConvertRequest } from '../../interfaces/convert-request.interface';
 import { ConversionDivisas } from '../../services/conversion-divisas.service';
+import { TransaccionService } from '../../services/transaccion.service';
+import { Transaccion } from '../../interfaces/transaccion.interface';
 
 @Component({
   selector: 'app-formulario-conversion',
@@ -60,11 +62,16 @@ export class FormularioConversionComponent {
       value: 'MXN',
       label: 'Peso mexicano',
     },
+    {
+      value: 'PEN',
+      label: 'Sol peruano',
+    },
   ];
 
   constructor(
     private fb: FormBuilder,
-    private convesionDivisasService: ConversionDivisas
+    private convesionDivisasService: ConversionDivisas,
+    private transaccionesService: TransaccionService
   ) {}
 
   get from(): FormControl {
@@ -97,11 +104,32 @@ export class FormularioConversionComponent {
       next: (response) => {
         this.status = 'success';
         this.resultadoConversion = response;
+        /* TODO: De donde saco esto? email, tasa conversión */
+        const transaccion: Transaccion = {
+          monedaOrigen: conversion.from,
+          cantidadOrigen: Number.parseInt(conversion.amount),
+          monedaDestino: conversion.to,
+          cantidadDestino: response,
+          emailCliente: 'ejemplo@email.com',
+          tasaConversion: 0.99,
+        };
+        this.guardarTransaccion(transaccion);
       },
       error: (error) => {
         this.status = 'error';
         console.error(error);
         this.resultadoConversion = 0;
+      },
+    });
+  }
+
+  guardarTransaccion(transaccion: Transaccion): void {
+    this.transaccionesService.create(transaccion).subscribe({
+      next: () => {
+        console.log('Transacción guardada');
+      },
+      error: (error) => {
+        console.error('Error al guardar la transacción', error);
       },
     });
   }
